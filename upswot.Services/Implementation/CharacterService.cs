@@ -28,7 +28,7 @@ namespace upswot.Services.Implementation
             try
             {
                 var response = await Get<CharacterResults>($"?name={name}");
-                if (response == null || !response.Results.Any())
+                if (response is null || !response.Results.Any())
                     throw new Exception("ERROR 404: Character doesn`t exist");
 
                 return response.Results;

@@ -23,6 +23,8 @@ namespace upswot.Services.Implementation
         public async Task<LocationScheme> GetLocation(int id)
         {
             var response = await Get<LocationScheme>(id.ToString());
+            if (response is null)
+                throw new Exception("ERROR 404: Location doesn`t exist");
             return response;
         }
     }
