@@ -26,6 +26,8 @@ namespace upswot.Services.Implementation
             try
             {
                 var response = await Get<EpisodeResult>($"?name={name}");
+                if (response == null || !response.Results.Any())
+                    throw new Exception("ERROR 404: Episode doesn`t exist");
                 return response.Results;
             }
             catch (Exception)
